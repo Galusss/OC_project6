@@ -1,13 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser'); // Importe le package body-parser (utiliser pour les requête POST)
+const mongoose = require('mongoose'); // Importe le package mongoose qui fait le liens entre notre APi et notre BDD
 
-// const Sauce = require('../models/sauce.js'); // Importe le schéma des données de sauce
-// const User = require ('./models/user.js'); // Importe le schéma des données de user
+const userRoutes = require('./routes/user'); // Importe notre route user qui concernera les requête vers /api/auth
 
-const sauceRoutes = require('./routes/sauces'); // Importe le routeur sauceRoutes
-
-mongoose.connect('mongodb+srv://superadmin:456.password@apibdd.nkz4u.mongodb.net/<dbname>?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://superadmin:456.password@apibdd.nkz4u.mongodb.net/<dbname>?retryWrites=true&w=majority', // Connexion avec la base de données
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -26,33 +23,6 @@ app.use((req, res, next) => { // Création d'un middleware qui permet d'acceder 
 
 app.use(bodyParser.json());
 
-app.use('/api/sauces', sauceRoutes) // Toute les demandes effectuer vers /api/sauces seront rediriger vers le routeur sauceRoutes
-
-
-
-
-
-
-
-app.use((req, res, next) => { 
-    console.log('Requête reçue !');
-    next();
-});
-
-app.use((req, res, next) => {
-    res.status(201);
-    next();
-});
-
-app.use((req, res, next) => {
-    res.json({ message: 'Serveur OK !' });
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('Réponse envoyée avec succès !');
-});
-
-
+app.use('/api/auth', userRoutes); // Toute les demandes effectuer vers /api/auth seront rediriger vers le routeur userRoutes qui lui même redirigera vers le contrôleur userCtrl.function
 
 module.exports = app;
