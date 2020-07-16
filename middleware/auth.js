@@ -1,4 +1,3 @@
-// APPLIQUER CE MIDDLEWARE A TOUTE LES ROUTES QUI DOIVENNT ETRE PROTEGER
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => { 
