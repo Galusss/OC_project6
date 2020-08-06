@@ -1,0 +1,6 @@
+# Ignore le fichier mongo.js qui contient les identifiants de connexion vers la base de donnée
+mongo.js
+
+# Ignore le controller 'user.js' qui permet l'inscription et la connexion et le middleware 'auth.js' qui permet de vérifier l'authentification de l'utilisateur
+controller/user.js
+middleware/auth.js

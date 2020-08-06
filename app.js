@@ -1,19 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser'); // Importe le package body-parser (utiliser pour les requête POST)
-const mongoose = require('mongoose'); // Importe le package mongoose qui fait le liens entre notre APi et notre BDD
+
 const path = require('path'); // Permet d'accéder au path, c'est grace a sa que l'on accedera au fichier 'images' peu importe l'URL
 
 const userRoutes = require('./routes/user'); // Importe notre route user qui concernera les requête vers /api/auth
 const sauceRoutes = require('./routes/sauce'); // Importe notre route sauce qui concernera les requête vers /api/sauces...
 
-
-mongoose.connect('mongodb+srv://superadmin:456.password@apibdd.nkz4u.mongodb.net/<dbname>?retryWrites=true&w=majority', // Connexion avec la base de données
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+const mongo = require('./mongo'); // La connexion vers la base de données est stockés dans le fichier 'mongo.js' qui est cacher par le .gitignore
 
 const app = express();
 
