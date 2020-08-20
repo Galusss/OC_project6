@@ -26,6 +26,10 @@ Les données des utilisateurs doivent impérativement être protégées, que ce 
  7. Les mots de passe sont stockés de manière sécurisée.
  8. Les adresses mails de la base de données sont uniques et un plugin Mongoose approprié est utilisé pour s’assurer de leur caractère unique (le plugin rapportera également les erreurs de la base de données).
  
+##### __Installation de l'API :__ 
+1. Télécharger le backend du projet.  (https://github.com/Galusss/OC_project6)
+2. Ajouter les variables d'environnement dans un nouveau fichier qu'il faut créer et nommer ".env" dans le dossier racine du backend. 
+3. Lancer le backend du projet avec la commande suivante "nodemon server"
 
 *Frontend de l'application :*
 https://github.com/OpenClassrooms-Student-Center/dwj-projet6
